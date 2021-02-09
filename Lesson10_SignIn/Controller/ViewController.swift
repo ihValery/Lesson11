@@ -117,6 +117,7 @@ class ViewController: UIViewController {
         saveEmail.isHidden = true
         savePass.isHidden = true
         
+        navigationController?.setNavigationBarHidden(true, animated: false)
         navigationController?.navigationBar.tintColor = .red
         navigationController?.navigationBar.alpha = 0
     }
@@ -129,10 +130,10 @@ class ViewController: UIViewController {
     }
 
     //Скрыть панель навигации на контроллере этого вида
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
+//    }
     
     //Кнопка входа появляется/скрывается
     private func signInBttnActivna(bool: Bool) {
