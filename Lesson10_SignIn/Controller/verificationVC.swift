@@ -22,7 +22,6 @@ class verificationVC: UIViewController, UITextFieldDelegate {
     @IBAction func vTextFieldAction(_ sender: UITextField) {
         errorPinLabel.isHidden = true
         if let textField = vTextField.text, textField == vTextField.placeholder {
-            print("Fffffffsfsfsdf")
             if let anketaSB = storyboard?.instantiateViewController(identifier: "AnketaSB") as? AnketaVC {
                 navigationController?.pushViewController(anketaSB, animated: true)
             }

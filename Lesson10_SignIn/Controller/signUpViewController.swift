@@ -15,6 +15,7 @@ class signUpViewController: UIViewController {
     @IBOutlet weak var passTFsecond: UITextField!
     @IBOutlet weak var passTFsecondTwo: UITextField!
     
+    @IBOutlet weak var progressViewPassword: UIProgressView!
     @IBOutlet weak var registrationButtonAction: UIButton!
     
     override func viewDidLoad() {
@@ -36,14 +37,14 @@ class signUpViewController: UIViewController {
     }
     
     @IBAction func passTFChangedSU(_ sender: UITextField) {
-        
+        isValidPassword()
     }
     @IBAction func passTFChangedSUTwo(_ sender: UITextField) {
-        if passTFsecond.text == passTFsecondTwo.text,
-           let eightPass = passTFsecond.text?.count, eightPass >= 8 {
-            signInBttnActivna(bool: isEmptyTF())
+        if passTFsecond.text == passTFsecondTwo.text {
+            signInBttnActivna(bool: true)
+            emailOrPassIncorrect.isHidden = true
         } else {
-            emailOrPassIncorrect.text = "Password is not correct"
+            emailOrPassIncorrect.text = "Password don't match"
             emailOrPassIncorrect.isHidden = false
         }
     }
@@ -85,6 +86,8 @@ class signUpViewController: UIViewController {
         passTFsecondTwo.clipsToBounds = true
         
         emailOrPassIncorrect.isHidden = true
+ 
+        progressViewPassword.trackTintColor = .white
     }
     
     //Проверка на корректность emaila (находиться в stackoverflow)
@@ -93,6 +96,49 @@ class signUpViewController: UIViewController {
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
+    
+    private func isValidPassword() {
+        let levelTwoBigChar   = NSPredicate(format: "SELF MATCHES %@ ",
+                                     "^(?=.*[a-z])(?=.*[A-Z]).{6,}$")
+        let levelTwoNumber    = NSPredicate(format: "SELF MATCHES %@ ",
+                                     "^(?=.*[a-z])(?=.*[0-9]).{6,}$")
+        let levelTwoSpec      = NSPredicate(format: "SELF MATCHES %@ ",
+                                     "^(?=.*[a-z])(?=.*[$@$#!%*?&]).{6,}$")
+        
+        let levelThreeNumber  = NSPredicate(format: "SELF MATCHES %@ ",
+                                     "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$")
+        let levelThreeSpec    = NSPredicate(format: "SELF MATCHES %@ ",
+                                     "^(?=.*[a-z])(?=.*[0-9])(?=.*[$@$#!%*?&]).{6,}$")
+        let levelThreeBigChar = NSPredicate(format: "SELF MATCHES %@ ",
+                                     "^(?=.*[a-z])(?=.*[$@$#!%*?&])(?=.*[A-Z]).{6,}$")
+        
+        let levelFour         = NSPredicate(format: "SELF MATCHES %@ ",
+                                     "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$#!%*?&]).{8,}$")
+        
+        if let pass = passTFsecond.text {
+            switch pass {
+                case _ where levelFour.evaluate(with: pass):
+                    progressViewPassword.progress = 1
+                    progressViewPassword.progressTintColor = .green
+                
+                case _ where levelThreeBigChar.evaluate(with: pass) || levelThreeNumber.evaluate(with: pass) || levelThreeSpec.evaluate(with: pass):
+                    progressViewPassword.progress = 0.75
+                    progressViewPassword.progressTintColor = .systemYellow
+                    
+                case _ where levelTwoBigChar.evaluate(with: pass) || levelTwoNumber.evaluate(with: pass) || levelTwoSpec.evaluate(with: pass):
+                    progressViewPassword.progress = 0.5
+                    progressViewPassword.progressTintColor = .orange
+                    
+                case _ where pass.count > 4:
+                    progressViewPassword.progress = 0.25
+                    progressViewPassword.progressTintColor = .red
+                    
+                default:
+                    progressViewPassword.progress = 0
+            }
+        }
+    }
+    
     
     //Кнопка входа появляется/скрывается
     private func signInBttnActivna(bool: Bool) {
