@@ -21,14 +21,14 @@ class verificationVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func vTextFieldAction(_ sender: UITextField) {
         errorPinLabel.isHidden = true
-        if let textField = vTextField.text {
-            if textField == vTextField.placeholder {
-                performSegue(withIdentifier: "toAnketa", sender: nil)
-            } else if textField.count == 4 {
+        if let textField = vTextField.text, textField == vTextField.placeholder {
+            print("Fffffffsfsfsdf")
+            if let anketaSB = storyboard?.instantiateViewController(identifier: "AnketaSB") as? AnketaVC {
+                navigationController?.pushViewController(anketaSB, animated: true)
+            }
+        } else if vTextField.text?.count == 4 {
                 errorPinLabel.isHidden = false
                 updatePCBttn.isHidden = false
-                
-            }
         }
     }
     @IBAction func updatePinCodeAction(_ sender: UIButton) {
@@ -65,11 +65,5 @@ class verificationVC: UIViewController, UITextFieldDelegate {
             let substringToReplace = textFieldText[rangeOfTextToReplace]
             let count = textFieldText.count - substringToReplace.count + string.count
             return count <= 4
-    }
-    
-    //Скрыть панель навигации на контроллере этого вида
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }

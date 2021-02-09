@@ -52,14 +52,20 @@ class ViewController: UIViewController {
         }
     }
     
-    //проваливаемся в приложение или нет
+//    unwin для кнопки назад (просто набери unwin)
+    @IBAction func unwindToSignIn(_ unwindSegue: UIStoryboardSegue) {
+//        let sourceViewController = unwindSegue.source
+//         Use data from the view controller which initiated the unwind segue
+    }
+    
+//    проваливаемся в приложение или нет
     private func authorizedOrNot() {
         if checkToken() {
             performSegue(withIdentifier: "segueToMainApp", sender: nil)
         }
     }
     
-    //Записываем фиктивный токен
+//    Записываем фиктивный токен
     private func saveCredantional() {
         UserDefaults.standard.set(emailTF.text, forKey: "emailSU")
         UserDefaults.standard.set(passTF.text, forKey: "passSU")
@@ -95,6 +101,10 @@ class ViewController: UIViewController {
     }
     
     private func setMyDesign() {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.navigationBar.tintColor = .red
+        navigationController?.navigationBar.alpha = 0
+        
         emailOrPassIncorrect.isHidden = true
         
         signInButton.layer.cornerRadius = 20
@@ -116,10 +126,6 @@ class ViewController: UIViewController {
         
         saveEmail.isHidden = true
         savePass.isHidden = true
-        
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        navigationController?.navigationBar.tintColor = .red
-        navigationController?.navigationBar.alpha = 0
     }
 
     //Проверка на корректность emaila (находиться в stackoverflow)

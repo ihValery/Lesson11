@@ -11,13 +11,7 @@ class MainAppViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewWillDisappear(false)
-
+            
         // Do any additional setup after loading the view.
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }

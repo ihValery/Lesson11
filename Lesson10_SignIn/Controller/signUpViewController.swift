@@ -19,43 +19,41 @@ class signUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewWillDisappear(true)
         setMyDesign()
+        
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func emailTFChangedSU(_ sender: UITextField) {
-        signInBttnActivna(bool: isEmptyTF())
-    }
-    @IBAction func passTFChangedSU(_ sender: UITextField) {
-        signInBttnActivna(bool: isEmptyTF())
-    }
-    @IBAction func passTFChangedSUTwo(_ sender: UITextField) {
-        signInBttnActivna(bool: isEmptyTF())
+    @IBAction func emailTFdidBegin() {
+        emailOrPassIncorrect.isHidden = true
     }
     
-    @IBAction func registrationButtonAction(_ sender: UIButton) {
-        if isValidEmail(emailTFsecond.text ?? "") {
-            UserDefaults.standard.set(emailTFsecond.text, forKey: "emailSU")
-            if passTFsecond.text == passTFsecondTwo.text,
-               let eightPass = passTFsecond.text?.count, eightPass >= 8 {
-                UserDefaults.standard.set(passTFsecond.text, forKey: "passSU")
-                
-               performSegue(withIdentifier: "inVerification", sender: nil)
-                //performSegue(withIdentifier: "fromRegistrationToMainApp", sender: nil)
-            } else {
-                emailOrPassIncorrect.text = "Password is not correct"
-                emailOrPassIncorrect.isHidden = false
-            }
-        } else {
+    @IBAction func emailTFdidEnd(_ sender: UITextField) {
+        if !isValidEmail(emailTFsecond.text ?? "") {
             emailOrPassIncorrect.text = "Email is not correct"
             emailOrPassIncorrect.isHidden = false
         }
-        
     }
     
-    //
+    @IBAction func passTFChangedSU(_ sender: UITextField) {
+        
+    }
+    @IBAction func passTFChangedSUTwo(_ sender: UITextField) {
+        if passTFsecond.text == passTFsecondTwo.text,
+           let eightPass = passTFsecond.text?.count, eightPass >= 8 {
+            signInBttnActivna(bool: isEmptyTF())
+        } else {
+            emailOrPassIncorrect.text = "Password is not correct"
+            emailOrPassIncorrect.isHidden = false
+        }
+    }
+    
+    @IBAction func registrationButtonAction(_ sender: UIButton) {
+        if let verificationSB = storyboard?.instantiateViewController(identifier: "verificationSB") as? verificationVC {
+            navigationController?.pushViewController(verificationSB, animated: true)
+            //self.showDetailViewController(verificationSB, sender: nil)  //модальное окно
+        }
+    }
     
     //Проверяем все три поля на заполненость
     private func isEmptyTF() -> Bool {
@@ -66,11 +64,6 @@ class signUpViewController: UIViewController {
             return false
         }
     }
-    
-//    var myUserForMyApp = UserModel()
-//    
-//    private func semMyUserForMyApp() {
-//    }
     
     private func setMyDesign() {
         registrationButtonAction.layer.cornerRadius = 20
@@ -106,11 +99,4 @@ class signUpViewController: UIViewController {
         registrationButtonAction.alpha = bool ? 1 : 0.3
         registrationButtonAction.isEnabled = bool
     }
-    
-    //Показать навигационную панель на контроллере вида мы ее не вызываем в viewDidLoad
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-
 }

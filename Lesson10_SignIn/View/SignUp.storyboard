@@ -11,7 +11,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="ynG-lz-TLe">
             <objects>
-                <viewController id="m2q-46-Jol" customClass="signUpViewController" customModule="Lesson10" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="m2q-46-Jol" customClass="signUpViewController" customModule="Lesson11" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pC7-MC-P8D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,7 +30,8 @@
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                 <connections>
-                                                    <action selector="emailTFChangedSU:" destination="m2q-46-Jol" eventType="editingChanged" id="227-TY-pR5"/>
+                                                    <action selector="emailTFdidBegin" destination="m2q-46-Jol" eventType="editingDidBegin" id="MZU-Kc-RlS"/>
+                                                    <action selector="emailTFdidEnd:" destination="m2q-46-Jol" eventType="editingDidEnd" id="2NS-UF-62Y"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xnR-6L-358">
@@ -78,7 +79,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZE-Bj-Fba">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZE-Bj-Fba">
                                 <rect key="frame" x="25" y="44" width="47" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wrm-f7-x8t"/>
@@ -86,6 +87,9 @@
                                 <state key="normal" title="Sign in">
                                     <color key="titleColor" systemColor="systemRedColor"/>
                                 </state>
+                                <connections>
+                                    <segue destination="WpK-gv-eZA" kind="unwind" unwindAction="unwindToSignIn:" id="5c1-CI-J4H"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bg0-JV-C6x">
                                 <rect key="frame" x="25" y="589" width="364" height="50"/>
@@ -128,13 +132,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RBf-N9-X0r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="WpK-gv-eZA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-733" y="-982"/>
         </scene>
         <!--VerificationVC-->
         <scene sceneID="iJ6-OZ-m57">
             <objects>
-                <viewController storyboardIdentifier="verificationSB" id="OIZ-ka-KBC" customClass="verificationVC" customModule="Lesson10" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="verificationSB" id="OIZ-ka-KBC" customClass="verificationVC" customModule="Lesson11" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6JC-Ji-vkw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -204,6 +209,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Dyg-ds-nk1"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="errorPinLabel" destination="Kdg-Es-UhL" id="rXj-bB-TwB"/>
                         <outlet property="updatePCBttn" destination="xYm-6J-tig" id="cYW-oh-uFR"/>
@@ -228,7 +235,7 @@
         <!--AnketaVC-->
         <scene sceneID="Ym9-sB-QTm">
             <objects>
-                <viewController storyboardIdentifier="AnketaSB" id="vfn-4V-OvL" customClass="AnketaVC" customModule="Lesson10" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnketaSB" id="vfn-4V-OvL" customClass="AnketaVC" customModule="Lesson11" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c4O-P1-cQx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -112,11 +112,4 @@ class AnketaVC: UIViewController {
         sendDataButton.isEnabled = true
         sendDataButton.alpha = 0.3
     }
-    
-    //Скрыть панель навигации на контроллере этого вида
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-
 }
