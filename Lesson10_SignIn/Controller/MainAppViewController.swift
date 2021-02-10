@@ -12,17 +12,20 @@ class MainAppViewController: UIViewController {
     @IBOutlet weak var labelForDate: UILabel!
     @IBOutlet weak var labelForUserDefols: UILabel!
     
-    var userModel: UserModel = UserModel()
+    var userModel = UserModel()
+    var myAnketa = Anketa()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         setMyDesign()
         // Do any additional setup after loading the view.
     }
     
     private func setMyDesign() {
-        labelForDate.text = userModel.email
+        userModel.anketa = myAnketa
+        labelForDate.text = userModel.anketa?.name
         labelForUserDefols.text = UserDefaults.standard.string(forKey: "passSU")
     }
     

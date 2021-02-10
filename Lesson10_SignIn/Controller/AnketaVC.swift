@@ -23,10 +23,14 @@ class AnketaVC: UIViewController {
     
     var userModel: UserModel = UserModel()
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setMyDesign()
-
+        
+        
         // Do any additional setup after loading the view.
     }
     @IBAction func genderSCChangeed(_ sender: UISegmentedControl) {
@@ -41,34 +45,45 @@ class AnketaVC: UIViewController {
             break
         }
     }
-    @IBAction func sendDataBttnAction(_ sender: UIButton) {
-        if let nameTF = nameTF.text, let surNameTF = surnameTF.text {
-            userModel.anketa?.name = nameTF
-            userModel.anketa?.surName = surNameTF
-            if genderSegmentControl.selectedSegmentIndex == 0 { userModel.anketa?.gender = Gender.man }
-            if genderSegmentControl.selectedSegmentIndex == 1 { userModel.anketa?.gender = Gender.woman }
-            if smokeSwitch.isOn      { userModel.anketa?.isSmoke = true }
-            if vegeterianSwitch.isOn { userModel.anketa?.isVegaterian = true }
-            userModel.anketa?.numOfChildren = Int(stepperChildren.value)
-            userModel.anketa?.dateOfBirth = DateOfBirthLabel.text
-            performSegue(withIdentifier: "fromAnketaToMainApp", sender: nil)
-        }
-        
-        
-//        if let nameTF = nameTF.text, let surNameTF = surnameTF.text {
-//            if let mainAppSB = storyboard?.instantiateViewController(identifier: "MainAppSB") as? MainAppViewController {
-//                mainAppSB.userModel.anketa?.name    = nameTF
-//                mainAppSB.userModel.anketa?.surName = surNameTF
-////                mainAppSB.userModel.anketa?.gender  = genderSegmentControl.value(forKey: "123")
-//                if smokeSwitch.isOn      { mainAppSB.userModel.anketa?.isSmoke = true }
-//                if vegeterianSwitch.isOn { mainAppSB.userModel.anketa?.isVegaterian = true }
-//                mainAppSB.userModel.anketa?.numOfChildren = Int(stepperChildren.value)
-                
-               
-                //navigationController?.pushViewController(mainAppSB, animated: true)
-//            }
-//        }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let nameTF = nameTF.text else { return }
+        guard segue.identifier == "testTempValue" else { return }
+        guard let myTEMP = segue.destination as? MainAppViewController else { return }
+        myTEMP.myAnketa.name = nameTF
     }
+    
+    
+//    @IBAction func sendDataBttnAction(_ sender: UIButton) {
+//
+////        if let nameTF = nameTF.text, let surNameTF = surnameTF.text {
+////            userModel.anketa?.name = nameTF
+////            userModel.anketa?.surName = surNameTF
+////            if genderSegmentControl.selectedSegmentIndex == 0 { userModel.anketa?.gender = Gender.man }
+////            if genderSegmentControl.selectedSegmentIndex == 1 { userModel.anketa?.gender = Gender.woman }
+////            if smokeSwitch.isOn      { userModel.anketa?.isSmoke = true }
+////            if vegeterianSwitch.isOn { userModel.anketa?.isVegaterian = true }
+////            userModel.anketa?.numOfChildren = Int(stepperChildren.value)
+////            userModel.anketa?.dateOfBirth = DateOfBirthLabel.text
+////            performSegue(withIdentifier: "fromAnketaToMainApp", sender: nil)
+////        }
+//
+//
+//     //   if let nameTF = nameTF.text/*, let surNameTF = surnameTF.text*/ {
+//            if let mainAppSB = storyboard?.instantiateViewController(identifier: "sendDataBttnSegue") as? MainAppViewController {
+//                mainAppSB.myAnketa.name = "Valery"
+//
+////                mainAppSB.userModel.anketa?.surName = surNameTF
+//////                mainAppSB.userModel.anketa?.gender  = genderSegmentControl.value(forKey: "123")
+////                if smokeSwitch.isOn      { mainAppSB.userModel.anketa?.isSmoke = true }
+////                if vegeterianSwitch.isOn { mainAppSB.userModel.anketa?.isVegaterian = true }
+////                mainAppSB.userModel.anketa?.numOfChildren = Int(stepperChildren.value)
+//
+//                navigationController?.pushViewController(MainAppSB, animated: true)
+//  //       }
+//        }
+//    }
+    
     
     //Крутим барабан. На прямую присвоить нельзя. Запоминаем работаем
     @IBAction func changeDatePicker(_ sender: UIDatePicker) {

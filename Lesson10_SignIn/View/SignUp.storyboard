@@ -173,6 +173,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="222333" translatesAutoresizingMaskIntoConstraints="NO" id="ka1-tT-Rop">
+                                <rect key="frame" x="-1" y="0.0" width="415" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verification" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdF-WH-4qh">
                                 <rect key="frame" x="92" y="140" width="230" height="85"/>
                                 <constraints>
@@ -219,10 +223,6 @@
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="222333" translatesAutoresizingMaskIntoConstraints="NO" id="ka1-tT-Rop">
-                                <rect key="frame" x="-1" y="0.0" width="415" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ncs-rH-bkX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -255,7 +255,7 @@
         <!--MainApp-->
         <scene sceneID="Eny-5m-bSs">
             <objects>
-                <viewControllerPlaceholder storyboardName="MainApp" id="DGl-a6-cuf" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="MainAppSB" storyboardName="MainApp" id="DGl-a6-cuf" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="8O8-IP-LlP"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KdQ-HK-UIR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -452,7 +452,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="sendDataBttnAction:" destination="vfn-4V-OvL" eventType="touchUpInside" id="HTI-63-PX0"/>
+                                    <segue destination="DGl-a6-cuf" kind="show" identifier="testTempValue" id="78L-HN-4sv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -488,7 +488,6 @@
                         <outlet property="stepperChildren" destination="c5l-sV-Rgw" id="hIB-N7-Pss"/>
                         <outlet property="surnameTF" destination="ChF-Yp-9I0" id="Oq7-QS-YiR"/>
                         <outlet property="vegeterianSwitch" destination="LID-Y4-cRp" id="plC-bt-8zo"/>
-                        <segue destination="DGl-a6-cuf" kind="show" identifier="fromAnketaToMainApp" id="2n6-va-WQw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uep-yW-mlP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -497,7 +496,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2n6-va-WQw"/>
+        <segue reference="78L-HN-4sv"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="111222" width="1170" height="2532"/>
