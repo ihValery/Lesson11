@@ -13,11 +13,19 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Lesson11" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="111222" translatesAutoresizingMaskIntoConstraints="NO" id="W2f-nx-vFN">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="222333" translatesAutoresizingMaskIntoConstraints="NO" id="7Q0-zi-jDq">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="S3w-MW-xe8">
-                                <rect key="frame" x="25" y="294" width="340" height="128"/>
+                                <rect key="frame" x="25" y="338" width="340" height="128"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="m37-Lm-6rq">
                                         <rect key="frame" x="0.0" y="0.0" width="340" height="100"/>
@@ -55,7 +63,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="J3H-QP-U1u">
-                                <rect key="frame" x="25" y="424" width="340" height="31"/>
+                                <rect key="frame" x="25" y="468" width="340" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text=" Save token" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwp-HC-rCJ">
                                         <rect key="frame" x="0.0" y="0.0" width="276" height="31"/>
@@ -70,7 +78,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49r-TE-1hQ">
-                                <rect key="frame" x="25" y="141" width="192.66666666666666" height="85"/>
+                                <rect key="frame" x="25" y="185" width="192.66666666666666" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="bmp-dp-5bm"/>
                                 </constraints>
@@ -79,7 +87,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9NR-SS-63A">
-                                <rect key="frame" x="313" y="0.0" width="52" height="50"/>
+                                <rect key="frame" x="313" y="44" width="52" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0Nn-91-TMG"/>
                                 </constraints>
@@ -91,7 +99,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RwY-PR-adQ">
-                                <rect key="frame" x="25" y="485" width="340" height="50"/>
+                                <rect key="frame" x="25" y="529" width="340" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="lDj-nK-iKd"/>
@@ -104,29 +112,14 @@
                                     <action selector="signInButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="07e-cs-0lT"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text=" Save password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7I-gn-FtT">
-                                <rect key="frame" x="233.66666666666663" y="650" width="131.33333333333337" height="24"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text=" Save email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krt-zz-mi7">
-                                <rect key="frame" x="233.99999999999997" y="629" width="93.666666666666657" height="24"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RwY-PR-adQ" secondAttribute="trailing" constant="25" id="1mX-wp-oOw"/>
-                            <constraint firstItem="h7I-gn-FtT" firstAttribute="top" secondItem="Krt-zz-mi7" secondAttribute="bottom" constant="-3" id="3PD-Bi-I3O"/>
                             <constraint firstItem="J3H-QP-U1u" firstAttribute="top" secondItem="m37-Lm-6rq" secondAttribute="bottom" constant="30" id="4Hh-TQ-emT"/>
                             <constraint firstItem="9NR-SS-63A" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="6q2-5i-vx8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S3w-MW-xe8" secondAttribute="trailing" constant="25" id="Dlx-5Y-AR3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="h7I-gn-FtT" secondAttribute="trailing" symbolic="YES" id="EVv-9H-ff0"/>
-                            <constraint firstItem="h7I-gn-FtT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="233.66666666666663" id="FSG-oL-oyo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9NR-SS-63A" secondAttribute="trailing" constant="25" id="Flj-Ci-4Zd"/>
                             <constraint firstItem="J3H-QP-U1u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="IEe-R1-Do7"/>
                             <constraint firstItem="S3w-MW-xe8" firstAttribute="top" secondItem="49r-TE-1hQ" secondAttribute="bottom" constant="68" id="PHf-ic-GE5"/>
@@ -135,11 +128,8 @@
                             <constraint firstItem="RwY-PR-adQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="kOH-1x-zzy"/>
                             <constraint firstItem="S3w-MW-xe8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="n7Z-G2-m9l"/>
                             <constraint firstItem="49r-TE-1hQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="oTp-VV-JS2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="h7I-gn-FtT" secondAttribute="bottom" constant="48" id="p7g-nI-51u"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="J3H-QP-U1u" secondAttribute="trailing" constant="25" id="sBy-Nn-92K"/>
                             <constraint firstItem="RwY-PR-adQ" firstAttribute="top" secondItem="J3H-QP-U1u" secondAttribute="bottom" constant="30" id="vX4-5b-foV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Krt-zz-mi7" secondAttribute="trailing" symbolic="YES" id="wGy-dI-tmL"/>
-                            <constraint firstItem="Krt-zz-mi7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="234" id="wdk-73-3DE"/>
                             <constraint firstItem="9NR-SS-63A" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xuu-pf-jQH"/>
                         </constraints>
                     </view>
@@ -148,8 +138,6 @@
                         <outlet property="emailOrPassIncorrect" destination="yml-Tp-Ale" id="r2r-4B-Kfl"/>
                         <outlet property="emailTF" destination="F7J-cd-BVN" id="XWg-CO-Ie1"/>
                         <outlet property="passTF" destination="mdP-Ic-sT3" id="lT6-lp-LgH"/>
-                        <outlet property="saveEmail" destination="Krt-zz-mi7" id="nCO-xO-IUt"/>
-                        <outlet property="savePass" destination="h7I-gn-FtT" id="Nf8-Au-x5l"/>
                         <outlet property="saveToken" destination="Nwp-HC-rCJ" id="W0M-BR-O2O"/>
                         <outlet property="signInButton" destination="RwY-PR-adQ" id="tsr-O2-1zb"/>
                         <outlet property="tokenSwitch" destination="NLq-5z-LK3" id="7nN-J1-PF1"/>
@@ -183,10 +171,9 @@
         <!--Navigation Controller-->
         <scene sceneID="Iz6-pg-bqg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q1Y-rX-Bvx" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Q1Y-rX-Bvx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="zfs-iH-gAi">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -203,6 +190,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="111222" width="1170" height="2532"/>
+        <image name="222333" width="1170" height="2532"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

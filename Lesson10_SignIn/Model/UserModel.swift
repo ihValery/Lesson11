@@ -7,9 +7,26 @@
 
 import Foundation
 
-struct UserModel {
-    let name: String? = nil
-    let surName: String? = nil
-    var email: String? = nil
-    var pass: String? = nil
+enum Gender: String, Codable {
+    case man
+    case woman
 }
+
+struct UserModel: Codable {
+    var email : String?
+    var pass  : String?
+    var anketa: Anketa?
+}
+
+struct Anketa: Codable {
+    var name         : String?
+    var surName      : String?
+    var dateOfBirth  : String?
+    var gender       : Gender?
+    var isSmoke      : Bool?
+    var isVegaterian : Bool?
+    var numOfChildren: Int?
+    
+    
+}
+

@@ -19,6 +19,9 @@ class AnketaVC: UIViewController {
     @IBOutlet weak var smokeSwitch: UISwitch!
     @IBOutlet weak var vegeterianSwitch: UISwitch!
     @IBOutlet weak var fillInAllTheFields: UILabel!
+    @IBOutlet weak var DateOfBirthLabel: UILabel!
+    
+    var userModel: UserModel = UserModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,26 +43,42 @@ class AnketaVC: UIViewController {
     }
     @IBAction func sendDataBttnAction(_ sender: UIButton) {
         if let nameTF = nameTF.text, let surNameTF = surnameTF.text {
-            if !nameTF.isEmpty && !surNameTF.isEmpty {
-                UserDefaults.standard.set(nameTF, forKey: "name")
-                UserDefaults.standard.set(surNameTF, forKey: "surname")
-                
-                if smokeSwitch.isOn {
-                    UserDefaults.standard.set("smoke", forKey: "smoke")
-                }
-                if vegeterianSwitch.isOn {
-                    UserDefaults.standard.set("vegan", forKey: "vegeterian")
-                }
-                
-                UserDefaults.standard.set(String(format: "%.0f", stepperChildren.value), forKey: "children")
-                sendDataButton.isEnabled = false
-                sendDataButton.alpha = 1
-            } else {
-                fillInAllTheFields.isHidden = false
-            }
+            userModel.anketa?.name = nameTF
+            userModel.anketa?.surName = surNameTF
+            if genderSegmentControl.selectedSegmentIndex == 0 { userModel.anketa?.gender = Gender.man }
+            if genderSegmentControl.selectedSegmentIndex == 1 { userModel.anketa?.gender = Gender.woman }
+            if smokeSwitch.isOn      { userModel.anketa?.isSmoke = true }
+            if vegeterianSwitch.isOn { userModel.anketa?.isVegaterian = true }
+            userModel.anketa?.numOfChildren = Int(stepperChildren.value)
+            userModel.anketa?.dateOfBirth = DateOfBirthLabel.text
+            performSegue(withIdentifier: "fromAnketaToMainApp", sender: nil)
         }
+        
+        
+//        if let nameTF = nameTF.text, let surNameTF = surnameTF.text {
+//            if let mainAppSB = storyboard?.instantiateViewController(identifier: "MainAppSB") as? MainAppViewController {
+//                mainAppSB.userModel.anketa?.name    = nameTF
+//                mainAppSB.userModel.anketa?.surName = surNameTF
+////                mainAppSB.userModel.anketa?.gender  = genderSegmentControl.value(forKey: "123")
+//                if smokeSwitch.isOn      { mainAppSB.userModel.anketa?.isSmoke = true }
+//                if vegeterianSwitch.isOn { mainAppSB.userModel.anketa?.isVegaterian = true }
+//                mainAppSB.userModel.anketa?.numOfChildren = Int(stepperChildren.value)
+                
+               
+                //navigationController?.pushViewController(mainAppSB, animated: true)
+//            }
+//        }
     }
     
+    //Крутим барабан. На прямую присвоить нельзя. Запоминаем работаем
+    @IBAction func changeDatePicker(_ sender: UIDatePicker) {
+        let timeFormatter = DateFormatter()
+ 
+        timeFormatter.dateStyle = .long
+        DateOfBirthLabel.text = timeFormatter.string(from: sender.date)
+        sendDataButton.isEnabled = true
+        sendDataButton.alpha = 1
+    }
     
     @IBAction func stepperAction(_ sender: UIStepper) {
         switch stepperChildren.value {

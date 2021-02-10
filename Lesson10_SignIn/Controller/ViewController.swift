@@ -18,11 +18,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passTF: UITextField!
     
-    @IBOutlet weak var saveEmail: UILabel!
-    @IBOutlet weak var savePass: UILabel!
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setMyDesign()
@@ -42,9 +37,7 @@ class ViewController: UIViewController {
     
     @IBAction func signInButtonAction(_ sender: UIButton) {
         if let email = UserDefaults.standard.string(forKey: "emailSU"), email == emailTF.text ,
-           let pass = UserDefaults.standard.string(forKey: "passSU"), pass == passTF.text {
-            
-            //saveCredantional()
+           let pass  = UserDefaults.standard.string(forKey: "passSU"),  pass  == passTF.text {
             saveTokenSwitch()
             performSegue(withIdentifier: "segueToMainApp", sender: nil)
         } else {
@@ -55,10 +48,10 @@ class ViewController: UIViewController {
 //    unwin для кнопки назад (просто набери unwin)
     @IBAction func unwindToSignIn(_ unwindSegue: UIStoryboardSegue) {
 //        let sourceViewController = unwindSegue.source
-//         Use data from the view controller which initiated the unwind segue
+
     }
     
-//    проваливаемся в приложение или нет
+//проваливаемся в приложение или нет
     private func authorizedOrNot() {
         if checkToken() {
             performSegue(withIdentifier: "segueToMainApp", sender: nil)
@@ -89,7 +82,7 @@ class ViewController: UIViewController {
     
     private func checkToken() -> Bool {
         //Если мы смогли вытащить значение и привести к Date
-        if let tempDate = UserDefaults.standard.object(forKey: "Date") as? Date,
+        if let tempDate  = UserDefaults.standard.object(forKey: "Date") as? Date,
            let earlyDate = Calendar.current.date(
             byAdding: .minute,
             value: -60,
@@ -103,7 +96,6 @@ class ViewController: UIViewController {
     private func setMyDesign() {
         navigationController?.setNavigationBarHidden(true, animated: false)
         navigationController?.navigationBar.tintColor = .red
-        navigationController?.navigationBar.alpha = 0
         
         emailOrPassIncorrect.isHidden = true
         
@@ -123,41 +115,24 @@ class ViewController: UIViewController {
         passTF.layer.cornerRadius = 15
         passTF.layer.borderWidth = 0.1
         passTF.clipsToBounds = true
-        
-        saveEmail.isHidden = true
-        savePass.isHidden = true
     }
 
     //Проверка на корректность emaila (находиться в stackoverflow)
     private func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let emailPred  = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
-
-    //Скрыть панель навигации на контроллере этого вида
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(true, animated: animated)
-//    }
     
     //Кнопка входа появляется/скрывается
     private func signInBttnActivna(bool: Bool) {
-        signInButton.alpha = bool ? 1 : 0.3
+        signInButton.alpha     = bool ? 1 : 0.3
         signInButton.isEnabled = bool
     }
     
     //показывает наши сохранненые email u password
     private func showEmailAndPass() {
-        if let email = UserDefaults.standard.string(forKey: "emailSU") {
-            saveEmail.text = email
-            saveEmail.isHidden = false
-            saveEmail.textColor = .lightGray
-        }
-        if let pass = UserDefaults.standard.string(forKey: "passSU") {
-            savePass.text = pass
-            savePass.isHidden = false
-            savePass.textColor = .lightGray
-        }
+        if let email = UserDefaults.standard.string(forKey: "emailSU") { emailTF.placeholder = "Email                      \(email)" }
+        if let pass  = UserDefaults.standard.string(forKey: "passSU")  { passTF.placeholder  = "Password              \(pass)" }
     }
 }

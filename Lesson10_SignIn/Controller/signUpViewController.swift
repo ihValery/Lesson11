@@ -18,6 +18,8 @@ class signUpViewController: UIViewController {
     @IBOutlet weak var progressViewPassword: UIProgressView!
     @IBOutlet weak var registrationButtonAction: UIButton!
     
+    var userModel: UserModel = UserModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setMyDesign()
@@ -31,7 +33,7 @@ class signUpViewController: UIViewController {
     
     @IBAction func emailTFdidEnd(_ sender: UITextField) {
         if !isValidEmail(emailTFsecond.text ?? "") {
-            emailOrPassIncorrect.text = "Email is not correct"
+            emailOrPassIncorrect.text     = "Email is not correct"
             emailOrPassIncorrect.isHidden = false
         }
     }
@@ -44,26 +46,24 @@ class signUpViewController: UIViewController {
             signInBttnActivna(bool: true)
             emailOrPassIncorrect.isHidden = true
         } else {
-            emailOrPassIncorrect.text = "Password don't match"
+            emailOrPassIncorrect.text     = "Password don't match"
             emailOrPassIncorrect.isHidden = false
         }
     }
     
     @IBAction func registrationButtonAction(_ sender: UIButton) {
         if let verificationSB = storyboard?.instantiateViewController(identifier: "verificationSB") as? verificationVC {
+            userModel.email = emailTFsecond.text
+            userModel.pass  = passTFsecondTwo.text
+            saveCredantional()
             navigationController?.pushViewController(verificationSB, animated: true)
             //self.showDetailViewController(verificationSB, sender: nil)  //модальное окно
         }
     }
     
-    //Проверяем все три поля на заполненость
-    private func isEmptyTF() -> Bool {
-        emailOrPassIncorrect.isHidden = true
-        if let x = emailTFsecond.text, let y = passTFsecond.text, let z = passTFsecondTwo.text {
-            return !x.isEmpty && !y.isEmpty && !z.isEmpty
-        } else {
-            return false
-        }
+    private func saveCredantional() {
+        UserDefaults.standard.set(emailTFsecond.text, forKey: "emailSU")
+        UserDefaults.standard.set(passTFsecondTwo.text, forKey: "passSU")
     }
     
     private func setMyDesign() {
@@ -93,10 +93,11 @@ class signUpViewController: UIViewController {
     //Проверка на корректность emaila (находиться в stackoverflow)
     private func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let emailPred  = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
     
+    //Проверка пароля стандартам безопастности
     private func isValidPassword() {
         let levelTwoBigChar   = NSPredicate(format: "SELF MATCHES %@ ",
                                      "^(?=.*[a-z])(?=.*[A-Z]).{6,}$")
@@ -139,10 +140,9 @@ class signUpViewController: UIViewController {
         }
     }
     
-    
     //Кнопка входа появляется/скрывается
     private func signInBttnActivna(bool: Bool) {
-        registrationButtonAction.alpha = bool ? 1 : 0.3
+        registrationButtonAction.alpha     = bool ? 1 : 0.3
         registrationButtonAction.isEnabled = bool
     }
 }
