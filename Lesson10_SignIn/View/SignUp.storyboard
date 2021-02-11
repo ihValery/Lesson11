@@ -377,9 +377,6 @@
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Date of dirhtday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTP-ve-dGw">
                                                         <rect key="frame" x="0.0" y="360" width="364" height="40"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="200" id="HsK-1l-sDz"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
