@@ -22,6 +22,8 @@ class signUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showLoginVC()
         setMyDesign()
         
         // Do any additional setup after loading the view.
@@ -60,6 +62,29 @@ class signUpViewController: UIViewController {
             //self.showDetailViewController(verificationSB, sender: nil)  //модальное окно
         }
     }
+    
+    @IBAction func SignInActionForAnimate() {
+        removeLoginViewController()
+    }
+    
+    //Стыренная анимация (работает, но надо самому разбираться/учиться)
+    private func showLoginVC() {
+        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        self.view.alpha = 0.0
+        UIView.animate(withDuration: 0.5) {
+            self.view.alpha = 1.0
+            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        }
+    }
+    
+    private func removeLoginViewController() {
+        UIView.animate(withDuration: 0.7, animations: {
+            self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            self.view.alpha = 0.0 }) { _ in                             //замыкание
+            self.view.removeFromSuperview()
+        }
+    }
+    
     
     private func saveCredantional() {
         UserDefaults.standard.set(emailTFsecond.text, forKey: "emailSU")

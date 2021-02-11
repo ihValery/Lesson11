@@ -44,12 +44,19 @@ class ViewController: UIViewController {
             emailOrPassIncorrect.isHidden = false
         }
     }
+    @IBAction func SingUpActionForAnimate(_ sender: UIButton) {
+            let loginVC = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(withIdentifier: "signUpSB") as! signUpViewController
+            
+            self.addChild(loginVC)
+            loginVC.view.frame = self.view.frame
+            self.view.addSubview(loginVC.view)
+            loginVC.didMove(toParent: self)
+    }
     
 //    unwin для кнопки назад (просто набери unwin)
-    @IBAction func unwindToSignIn(_ unwindSegue: UIStoryboardSegue) {
+//    @IBAction func unwindToSignIn(_ unwindSegue: UIStoryboardSegue) {
 //        let sourceViewController = unwindSegue.source
-
-    }
+//    }
     
 //проваливаемся в приложение или нет
     private func authorizedOrNot() {
@@ -85,7 +92,7 @@ class ViewController: UIViewController {
         if let tempDate  = UserDefaults.standard.object(forKey: "Date") as? Date,
            let earlyDate = Calendar.current.date(
             byAdding: .minute,
-            value: -60,
+            value: -1,
             to: Date()) {
             return earlyDate <= tempDate
         } else {
