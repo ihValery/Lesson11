@@ -11,7 +11,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="ynG-lz-TLe">
             <objects>
-                <viewController id="m2q-46-Jol" customClass="signUpViewController" customModule="Lesson11" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUpSB" id="m2q-46-Jol" customClass="signUpViewController" customModule="Lesson11" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pC7-MC-P8D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,7 +113,7 @@
                                     <color key="titleColor" systemColor="systemRedColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="WpK-gv-eZA" kind="unwind" unwindAction="unwindToSignIn:" id="5c1-CI-J4H"/>
+                                    <action selector="SignInActionForAnimate" destination="m2q-46-Jol" eventType="touchUpInside" id="E4K-9R-ghO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bg0-JV-C6x">
@@ -157,7 +157,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RBf-N9-X0r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="WpK-gv-eZA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-733.33333333333337" y="-982.36607142857133"/>
         </scene>

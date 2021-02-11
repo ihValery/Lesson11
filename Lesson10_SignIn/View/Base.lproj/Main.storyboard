@@ -11,7 +11,7 @@
         <!--Sign in-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Lesson11" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signInSB" id="BYZ-38-t0r" customClass="ViewController" customModule="Lesson11" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,7 +95,7 @@
                                     <color key="titleColor" systemColor="systemRedColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="mxM-v2-KZ6" kind="show" id="WO5-Lg-mcZ"/>
+                                    <action selector="SingUpActionForAnimate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8wi-Dk-oWG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RwY-PR-adQ">
@@ -157,16 +157,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sEF-mP-EOw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1542" y="334"/>
-        </scene>
-        <!--SignUp-->
-        <scene sceneID="8uh-Gd-To3">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SignUp" id="mxM-v2-KZ6" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="3af-dx-dtV"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="o0x-RX-KMP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1542" y="-132"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Iz6-pg-bqg">
